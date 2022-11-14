@@ -25,11 +25,13 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         /*
-        This is where we configure the security required for our endpoints and setup our app to serve as
+        This is where we configure the security required for our endpoints and set up our app to serve as
         an OAuth2 Resource Server, using JWT validation.
         */
     http.authorizeRequests()
         .mvcMatchers("/").permitAll()
+        .mvcMatchers("/test").permitAll()
+        .mvcMatchers("/api/test-private-scoped").hasAuthority("SCOPE_read:tests")
         .mvcMatchers("/api/public").permitAll()
         .mvcMatchers("/api/private").authenticated()
         .mvcMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")

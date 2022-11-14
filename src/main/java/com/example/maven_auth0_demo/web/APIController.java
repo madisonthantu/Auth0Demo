@@ -31,4 +31,15 @@ public class APIController {
   public Message privateScopedEndpoint() {
     return new Message("All good. You can see this because you are Authenticated with a Token granted the 'read:messages' scope");
   }
+
+  @GetMapping(value = "/test-public")
+  public Message testPublic() {
+    return new Message("XD\nThis is a test ... let's see if it works xoxo\nXD");
+  }
+
+  @GetMapping(value = "/test-private-scoped")
+  public Message testPrivateScoped() {
+    return new Message("XDDDDDDDDDDDD\nThis is a PRIVATE-SCOPED test ... let's see if it works xoxo\nXD");
+  }
+
 }
